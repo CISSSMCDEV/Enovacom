@@ -34,6 +34,10 @@
    <!-- 
         *******************************************************************************************
         Redefinir le template "SoftLab".
+
+        Pour qu'un message soit envoye vers le systeme destination toutes les regles de filtrage 
+        doivent etre VRAI. Voici la conditions "Application/N4 - Condition Route":
+        count(//systeme[@nom='SoftLab']/reglesFiltrage/*[text() = 'false']) = 0
         
         Regles de filtrage:
         
