@@ -1,9 +1,3 @@
-<!--
-     Date        User      Description / commentaires
-     ++++++++++  ++++++++  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-     2022-04-01  lest0500  Version initiale
--->
-
 <xsl:stylesheet xmlns:fn="http://www.w3.org/2005/xpath-functions"
    xmlns:functx="http://www.functx.com"
    xmlns:util="http://whatever"
