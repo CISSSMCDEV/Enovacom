@@ -1,0 +1,30 @@
+
+<transformation>
+   <xslt>
+      <fichier obligatoire="true">util-SegmentEclatement.xsl</fichier>
+      <param1>PID.4.1</param1>
+      <param2>PID.5.1</param2>
+      <param3>PID.11.1</param3>
+   </xslt>
+   <xslt>
+      <fichier obligatoire="true">Eclinibase ADT Silp perso.xsl</fichier>
+   </xslt>
+   
+
+   <!-- 
+      *********************************************************************************************
+      Transformation: Pays du patient (PID.11.6)
+      *********************************************************************************************
+   -->
+
+   <mapping>
+      <application>Eclinibase ADTSIU Silp Pays</application>
+      <requeteXPath>//PID.11.6/text()</requeteXPath>
+      <actionXpathEmpty>doNothing</actionXpathEmpty>
+      <actionXpathMulti>replaceAll</actionXpathMulti>
+      <sensMappage>normal</sensMappage>
+      <actionValeurNonTrouvee>doNothing</actionValeurNonTrouvee>
+      <valeurParDefaut/>
+   </mapping>
+   
+</transformation>

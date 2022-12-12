@@ -1,0 +1,11 @@
+
+   <transformation>
+      <xslt>
+         <fichier obligatoire="true">util-SegmentEclatement.xsl</fichier>
+         <param1 xpathvalue="false">PID.4.1</param1>
+         <!-- Nom de premier élément répétitif -->
+      </xslt>
+      <xslt>
+         <fichier obligatoire="true">Eclinibase ADTSIU canonique perso.xsl</fichier>
+      </xslt>
+   </transformation>
