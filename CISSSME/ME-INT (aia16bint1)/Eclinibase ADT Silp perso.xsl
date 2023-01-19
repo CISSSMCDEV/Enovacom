@@ -154,6 +154,8 @@
                     </xsl:choose>
                 </xsl:when>
                 
+                <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229011' and /HL7/PV1/PV1.2.1 = 'I' and matches(/HL7/MSH/MSH.9.2, 'A03|A23')">KCAHARC</xsl:when>
+                
                 <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229102' and /HL7/PV1/PV1.2.1 = 'E'">
                     <xsl:choose>
                         <xsl:when test="matches(/HL7/PV1/PV1.3.2, 'P7|P8|P9')">KCBHURG1</xsl:when>
