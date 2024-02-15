@@ -107,25 +107,7 @@
             </xsl:choose>
         </xsl:element>
     </xsl:template>
-    
-    <!-- 
-        *******************************************************************************************
-        Transformation: Ville du patient (PID.11.3)
-        *******************************************************************************************
-    -->
-    <xsl:template name="PID.11.3">
-        <xsl:element name="PID.11.3">
-            <xsl:choose>
-                <xsl:when test="contains('A01 A04 A08 A28 A31', $mshEventCode) and string-length(/HL7/PID/PID.11[1]/PID.11.2) = 0">
-                    <xsl:value-of select="upper-case(/HL7/PID/PID.11[1]/PID.11.3)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="upper-case(/HL7/PID/PID.11[1]/PID.11.2)"/>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:element>
-    </xsl:template>
-    
+       
     <!-- 
         *******************************************************************************************
         Transformation: Personne Contact (NK1 – Père)
@@ -143,7 +125,7 @@
             <xsl:choose>
                 <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229011' and /HL7/PV1/PV1.2.1 = 'E'">
                     <xsl:choose>
-                        <xsl:when test="matches(/HL7/MSH/MSH.9.2, 'A03|A23')">KCAHARU</xsl:when>
+                        <xsl:when test="matches(/HL7/MSH/MSH.9.2, 'A03|A23') or (/HL7/MSH/MSH.9.2 = 'A08' and string(/HL7/PV1/PV1.45.1) != '')">KCAHARU</xsl:when>
                         <xsl:when test="substring(substring-after(/HL7/PV1/PV1.3.3, '-'), 1, 1) = 'A'">KCAHURG-A</xsl:when>
                         <xsl:when test="substring(substring-after(/HL7/PV1/PV1.3.3, '-'), 1, 1) = 'B'">KCAHURG-B</xsl:when>
                         <xsl:when test="substring(substring-after(/HL7/PV1/PV1.3.3, '-'), 1, 1) = 'C'">KCAHURG-C</xsl:when>
@@ -154,7 +136,7 @@
                     </xsl:choose>
                 </xsl:when>
                 
-                <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229011' and /HL7/PV1/PV1.2.1 = 'I' and matches(/HL7/MSH/MSH.9.2, 'A03|A23')">KCAHARC</xsl:when>
+                <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229011' and /HL7/PV1/PV1.2.1 = 'I' and (matches(/HL7/MSH/MSH.9.2, 'A03|A23') or (/HL7/MSH/MSH.9.2 = 'A08' and string(/HL7/PV1/PV1.45.1) != ''))">KCAHARC</xsl:when>
                 
                 <xsl:when test="/HL7/PID/PID.4[1]/PID.4.6 = '51229102' and /HL7/PV1/PV1.2.1 = 'I' and matches(/HL7/MSH/MSH.9.2, 'A03|A23')">KCBHARCH</xsl:when>
                 
