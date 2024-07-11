@@ -108,6 +108,49 @@
         </xsl:element>
     </xsl:template>
        
+	   
+	   
+	<!-- 
+        *******************************************************************************************
+        Transformation: Ajout de la date d'expiration RAMQ (PID.19.2)
+        *******************************************************************************************
+    -->	   
+	   
+	   <!-- *** Debut du code du CO-I - provient d'un nouvelle version du CO-I *** -->
+	   <xsl:template name="PID.19">
+        <xsl:call-template name="PID.19.1"/>
+        <xsl:call-template name="PID.19.2"/>
+    </xsl:template>
+    <xsl:template name="PID.19.1">
+        <xsl:element name="PID.19.1">
+            <xsl:choose>
+                <xsl:when test="contains('A01 A04 A08 A28 A29 A31', $mshEventCode) and string-length(/HL7/ZI1/ZI1.2.1) = 0">""</xsl:when>
+                <xsl:when test="contains('A01 A04 A08 A28 A29 A31', $mshEventCode) and /HL7/ZI1/ZI1.3.1 != 'QUE' and /HL7/ZI1/ZI1.3.1 != 'QC' and /HL7/ZI1/ZI1.3.1 != '79'">""</xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="/HL7/ZI1/ZI1.2.1"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+    <xsl:template name="PID.19.2">
+        <xsl:element name="PID.19.2">
+            <xsl:choose>
+                <xsl:when test="contains('A01 A04 A08 A28 A29 A31', $mshEventCode) and string-length(/HL7/ZI1/ZI1.2.1) = 0">""</xsl:when>
+                <xsl:when test="contains('A01 A04 A08 A28 A29 A31', $mshEventCode) and /HL7/ZI1/ZI1.3.1 != 'QUE' and /HL7/ZI1/ZI1.3.1 != 'QC' and /HL7/ZI1/ZI1.3.1 != '79'">""</xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="/HL7/ZI1/ZI1.5.1 != ''">
+                            <xsl:value-of select="replace(/HL7/ZI1/ZI1.5.1, '/', '')"/>
+                        </xsl:when>
+                        <xsl:otherwise>""</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:element>
+    </xsl:template>
+	<!-- *** Debut du code du CO-I - provient d'un nouvelle version du CO-I *** -->
+	   
+	   
     <!-- 
         *******************************************************************************************
         Transformation: Personne Contact (NK1 – Père)
